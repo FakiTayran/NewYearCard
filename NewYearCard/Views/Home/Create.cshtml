@@ -22,7 +22,7 @@
     @Html.TextBoxFor(x => x.SenderName, new { @class = "form-control" })
 
     @Html.LabelFor(x => x.PictureName, new { @class = "text text-primary" })
-    @Html.TextBoxFor(x => x.PictureName, new { @class = "form-control", id = "myId", onchange = "pictureNumber()", @disabled = "disabled" })
+    @Html.TextBoxFor(x => x.PictureName, new { @class = "form-control", id = "myId", onchange = "pictureNumber()"@*, @disabled = "disabled"*@ })
     @Html.ValidationMessageFor(x => x.PictureName, null, new { @class = "text text-danger" })
 
     <br />
