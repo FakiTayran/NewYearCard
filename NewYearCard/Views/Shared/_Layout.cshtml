@@ -1,0 +1,88 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - My ASP.NET Application</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+</head>
+<body>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container ">
+            <div class="navbar-header">
+                @Html.ActionLink("Happy New Year", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                    <li>@Html.ActionLink("Create New Card", "Create", "Home")</li>
+                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="container body-content">
+        @RenderBody()
+        <hr />
+        <footer>
+            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+        </footer>
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    <script>
+        $('input[type="checkbox"]').on('change', function () {
+            $(this).siblings('input[type="checkbox"]').prop('checked', false);
+        });
+    </script>
+    <script>
+        $("select").imagepicker();
+    </script>
+
+    <script>
+        function pictureName() {
+            var x = document.getElementById("mySelect").value;
+            document.getElementById("myId").value = x + ".png";
+        }
+
+        //var validator = $("#myForm").validate();
+        //validator.element("#mySelect");
+
+
+        //jQuery.validator.setDefaults({
+        //    debug: true,
+        //    success: "valid"
+        //});
+        //var form = $("#myForm");
+        //form.validate();
+        //$("button").click(function () {
+        //    form.valid();
+        //});
+    </script>
+    <script src="~/Scripts/html2canvas.min.js"></script>
+    <script>
+        html2canvas(document.getElementById('imageDIV')).then(function (canvas) {
+            document.body.appendChild(canvas)
+        })
+
+       
+    </script>
+    <script>
+        var canvas = html2canvas(document.getElementById('imageDIV'));
+        var myDownloadBtn = document.getElementById('download');
+
+        myDownloadBtn.addEventListener('click', function () {
+
+            if (window.navigator.msSaveBlob) {
+
+                window.navigator.msSaveBlob(canvas.msToBlob(), "canvas-image-png");
+            }
+        });
+    </script>
+
+    @RenderSection("scripts", required: false)
+
+</body>
+</html>

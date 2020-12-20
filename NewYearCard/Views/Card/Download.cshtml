@@ -1,0 +1,28 @@
+﻿@using NewYearCard.Models
+@model Card
+@{
+    ViewBag.Title = "Download";
+}
+
+<h2>Download</h2>
+
+@using (Html.BeginForm("Download", "Card", FormMethod.Post))
+{
+    @Html.AntiForgeryToken();
+    @Html.HiddenFor(x => x.Id);
+
+    <p style="color:white; font-size:x-large">&quot;@Model.Header  @Model.PictureName &quot; Are you sure to download this card ?</p>
+    
+    <input type="button" class="btn btn-lg btn-danger" value="DOWNLOAD" id="download" onclick="location.href = '/Content/img/@Model.PictureName'" download>
+    <input type="button" class="btn btn-lg btn-warning" value="CANCEL" onclick="location.href = '@Url.Action("Index","Home")'">
+}
+
+<div class="card">
+    <h3>@Model.Header</h3>
+    <img src="~/Content/img/@Model.PictureName" alt="" />
+    <div class="cardNot">
+        <p>@Model.MessageLine1</p>
+        <b>@Model.SenderName</b>
+    </div>
+</div>
+

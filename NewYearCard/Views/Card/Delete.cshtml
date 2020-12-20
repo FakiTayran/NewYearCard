@@ -1,0 +1,17 @@
+﻿@using NewYearCard.Models
+@model Card
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+@using (Html.BeginForm("Delete", "Card", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+    @Html.HiddenFor(x => x.Id)
+
+    <p style="color:white; font-size:x-large">&quot;@Model.Header  @Model.PictureName &quot; Are you sure to delete this card ?</p>
+    <button type="submit" class="btn btn-lg btn-danger">DELETE</button>
+    <input type="button" class="btn btn-lg btn-warning" value="CANCEL" onclick="location.href = '@Url.Action("Index","Home")'">
+}

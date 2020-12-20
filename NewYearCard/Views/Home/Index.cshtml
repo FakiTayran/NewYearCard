@@ -1,0 +1,36 @@
+﻿@using NewYearCard.Models
+@model List<Card>
+@{
+    ViewBag.Title = "Home Page";
+}
+
+<div class="jumbotron">
+    <h1>Create Your Own Card</h1>
+    <p class="lead">
+        We offer you the opportunity to make your own Christmas card.
+    </p>
+    <button class="btn btn-secondary btn-lg">@Html.ActionLink("Create New One", "Create", "Home", null, new { @class = "text text-white" })</button>
+</div>
+
+<div class="allCards">
+    @foreach (Card card in Model)
+    {
+        <div class="card">
+            <div id="">
+                <h3>@card.Header</h3>
+                <img src="~/Content/img/@card.PictureName" alt="" />
+                <div class="cardNot">
+                    <p>@card.MessageLine1</p>
+                    <b>@card.SenderName</b>
+                </div>
+            </div>
+            <div>
+                <input type="button" class="btn btn-lg btn-warning" value="&#x270E;" onclick="location.href = '@Url.Action("Edit","Card",new {id = card.Id})'">
+                <input type="button" class="btn btn-lg btn-danger" value="&#x2326;" onclick="location.href = '@Url.Action("Delete","Card",new {id = card.Id })'">
+                <input type="button" class="btn btn-lg btn-success" value="&#128190;" onclick="location.href = '@Url.Action("Download","Card",new {id = card.Id })'">
+                <input type="button" class="btn btn-lg btn-primary" value="&#128065;" onclick="location.href = '@Url.Action("ViewCard","Card",new {id = card.Id })'">
+            </div>
+        </div>
+
+    }
+</div>

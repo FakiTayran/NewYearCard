@@ -1,0 +1,57 @@
+﻿@using NewYearCard.Models
+@model Card
+@{
+    ViewBag.Title = "Edit";
+}
+<h2>Edit Card</h2>
+
+
+@using (Html.BeginForm("Edit", "Card", FormMethod.Post, new { @class = "myform", id = "myForm" }))
+{
+    @Html.AntiForgeryToken()
+    @Html.HiddenFor(x=>x.Id)
+
+    @Html.LabelFor(x => x.Header, new { @class = "text text-primary" })
+    @Html.TextBoxFor(x => x.Header, new { @class = "form-control" })
+    @Html.ValidationMessageFor(x => x.Header, null, new { @class = "text text-danger" })
+    <br />
+    @Html.LabelFor(x => x.MessageLine1, new { @class = "text text-primary" })
+    @Html.TextAreaFor(x => x.MessageLine1, new { @class = "form-control" })
+    @Html.ValidationMessageFor(x => x.MessageLine1, null, new { @class = "text text-danger" })
+    <br />
+    @Html.LabelFor(x => x.SenderName, new { @class = "text text-primary" })
+    @Html.TextBoxFor(x => x.SenderName, new { @class = "form-control" })
+
+    @Html.LabelFor(x => x.PictureName, new { @class = "text text-primary" })
+    @Html.TextBoxFor(x => x.PictureName, new { @class = "form-control", id = "myId", onchange = "pictureNumber()" })
+    @Html.ValidationMessageFor(x => x.PictureName, null, new { @class = "text text-danger" })
+
+    <br />
+    <button type="submit" class="btn btn-success">Save</button>
+
+    <br />
+    <br />
+    <select class="image-picker show-html form-control " onchange="pictureName()" id="mySelect">
+        <option value=""></option>
+        <option data-img-src="/Content/img/1.png" value="1">1</option>
+        <option data-img-src="/Content/img/2.png" value="2">2</option>
+        <option data-img-src="/Content/img/3.png" value="3">3</option>
+        <option data-img-src="/Content/img/4.png" value="4">4</option>
+        <option data-img-src="/Content/img/5.png" value="5">5</option>
+        <option data-img-src="/Content/img/6.png" value="6">6</option>
+        <option data-img-src="/Content/img/7.png" value="7">7</option>
+        <option data-img-src="/Content/img/8.png" value="8">8</option>
+        <option data-img-src="/Content/img/9.png" value="9">9</option>
+        <option data-img-src="/Content/img/10.png" value="10">10</option>
+        <option data-img-src="/Content/img/11.png" value="11">11</option>
+        <option data-img-src="/Content/img/12.png" value="12">12</option>
+        <option data-img-src="/Content/img/13.png" value="13">13</option>
+        <option data-img-src="/Content/img/14.png" value="14">14</option>
+    </select>
+
+}
+
+
+
+
+

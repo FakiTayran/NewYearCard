@@ -1,0 +1,16 @@
+﻿@using NewYearCard.Models
+@model Card
+@{
+    ViewBag.Title = "ViewCard";
+}
+
+<h2>View Selected Card</h2>
+
+<div class="card">
+    <h3>@Model.Header</h3>
+    <img src="~/Content/img/@Model.PictureName" alt="" />
+    <div class="cardNot">
+        <p>@Model.MessageLine1</p>
+        <b>@Model.SenderName</b>
+    </div>
+</div>
